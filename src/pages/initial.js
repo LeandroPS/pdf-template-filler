@@ -9,7 +9,8 @@ export default ({ data, template, setData, setTemplate, setPage }) => {
     const [error, setError] = useState("");
 
     const handleNext = () => {
-        if (data === undefined || template === undefined) {
+        alert("bla");
+        if (!data || !template) {
             setError("Selecione o template e os dados a serem carregados");
             return;
         }
@@ -24,7 +25,7 @@ export default ({ data, template, setData, setTemplate, setPage }) => {
             <FileInput onSelectFile={setTemplate} />
             <h2>2. Selecione o arquivo csv a preencher o PDF</h2>
             <FileInput onSelectFile={setData} />
-            {error === "" && <Error>{error}</Error>}
+            {error !== "" && <Error>{error}</Error>}
             <Button onClick={handleNext}>Gerar PDFs</Button>
         </Container>
     );
