@@ -3,6 +3,12 @@ import styled from "styled-components";
 
 import Button from "./button";
 
+import colors from "../utils/colors";
+
+const Wrapper = styled.div`
+    margin-bottom: 20px;
+`;
+
 const FileInput = styled.input`
     display: none;
     width: 0;
@@ -21,13 +27,19 @@ export default ({ label = "Selecionar arquivo", onSelectFile = () => {} }) => {
     };
 
     return (
-        <>
+        <Wrapper>
             <FileInput
                 ref={fileInput}
                 onChange={handleFileSelect}
                 type="file"
             />
-            <Button onClick={handleClick}>{label}</Button>
-        </>
+            <Button
+                textColor={colors.dark}
+                color={colors.gray}
+                onClick={handleClick}
+            >
+                {label}
+            </Button>
+        </Wrapper>
     );
 };

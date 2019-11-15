@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "./App.css";
+
 import Initial from "./pages/initial";
 import Final from "./pages/final";
 
@@ -12,7 +14,9 @@ const App = () => {
     return (
         <>
             {currentPage === "select-documents" && (
-                <Initial {...{ data, template, setData, setTemplate }} />
+                <Initial
+                    {...{ data, template, setData, setTemplate, setPage }}
+                />
             )}
             {currentPage === "download-pdfs" && (
                 <Final {...{ data, template, setData, setTemplate }} />

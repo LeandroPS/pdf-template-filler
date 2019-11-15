@@ -4,15 +4,15 @@ import colors from "../utils/colors";
 
 export default styled.button`
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 10px 20px;
-    display: block;
-    color: #fff;
+    display: inline-block;
+    color: ${props => props.textColor || "#fff"};
     height: 40px;
-    background-color: ${colors.red};
+    background-color: ${props => props.color || colors.red};
     outline: none;
     cursor: pointer;
-    margin-top: 20px;
+    font: inherit;
 
     &:hover {
         opacity: 0.8;

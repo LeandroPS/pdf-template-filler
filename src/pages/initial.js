@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 
+import styled from "styled-components";
+
 import Button from "../components/button";
 import FileInput from "../components/file-input";
 import Container from "../components/container";
 import Error from "../components/error";
+
+const CenteredContainer = styled(Container)`
+    text-align: center;
+`;
 
 export default ({ data, template, setData, setTemplate, setPage }) => {
     const [error, setError] = useState("");
@@ -19,7 +25,7 @@ export default ({ data, template, setData, setTemplate, setPage }) => {
     };
 
     return (
-        <Container>
+        <CenteredContainer>
             <h1>PDF form filler</h1>
             <h2>1. Selecione o pdf a servir de template</h2>
             <FileInput onSelectFile={setTemplate} />
@@ -27,6 +33,6 @@ export default ({ data, template, setData, setTemplate, setPage }) => {
             <FileInput onSelectFile={setData} />
             {error !== "" && <Error>{error}</Error>}
             <Button onClick={handleNext}>Gerar PDFs</Button>
-        </Container>
+        </CenteredContainer>
     );
 };
