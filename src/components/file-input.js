@@ -15,7 +15,11 @@ const FileInput = styled.input`
     height: 0;
 `;
 
-export default ({ label = "Selecionar arquivo", onSelectFile = () => {} }) => {
+export default ({
+    label = "Selecionar arquivo",
+    onSelectFile = () => {},
+    readAs = "DataURL"
+}) => {
     const fileInput = useRef();
 
     const handleClick = () => {
@@ -23,7 +27,14 @@ export default ({ label = "Selecionar arquivo", onSelectFile = () => {} }) => {
     };
 
     const handleFileSelect = e => {
-        onSelectFile(e.target.files[0]);
+        let reader = new FileReader();
+
+        reader.onloadend = () => {
+            onSelectFile(reader.result);
+        };
+
+        if (readAs === "Text") reader.readAsText(e.target.files[0]);
+        else if (readAs === "DataURL") reader.readAsDataURL(e.target.files[0]);
     };
 
     return (
