@@ -22,7 +22,7 @@ export default ({ data, template, setData, setTemplate, setPage }) => {
             return;
         }
 
-        setPage("");
+        setPage("download-pdfs");
     };
 
     const handleTemplateChange = file => {
@@ -33,6 +33,7 @@ export default ({ data, template, setData, setTemplate, setPage }) => {
         setError("");
         try {
             setData(TSVtoJSON(file));
+            console.log("foi");
         } catch (e) {
             setError("Arquivo .tsv com formatação inválida");
         }
@@ -42,9 +43,9 @@ export default ({ data, template, setData, setTemplate, setPage }) => {
         <CenteredContainer>
             <h1>PDF form filler</h1>
             <h2>1. Selecione o pdf a servir de template</h2>
-            <FileInput onSelectFile={handleTemplateChange} readAs="Text" />
+            <FileInput onSelectFile={handleTemplateChange} readAs="DataURL" />
             <h2>2. Selecione o arquivo tsv a preencher o PDF</h2>
-            <FileInput onSelectFile={handleDataChange} readAs="DataURL" />
+            <FileInput onSelectFile={handleDataChange} readAs="Text" />
             {error !== "" && <Error>{error}</Error>}
             <Button onClick={handleNext}>Gerar PDFs</Button>
         </CenteredContainer>

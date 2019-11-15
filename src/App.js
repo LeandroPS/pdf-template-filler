@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./App.css";
 
@@ -10,6 +10,10 @@ const App = () => {
 
     const [data, setData] = useState();
     const [template, setTemplate] = useState();
+
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
 
     return (
         <>
