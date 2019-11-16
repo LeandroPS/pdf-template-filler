@@ -11,6 +11,7 @@ export default styled.button`
     height: 40px;
     background-color: ${props => props.color || colors.red};
     outline: none;
+    margin-top: 10px;
     cursor: pointer;
     font: inherit;
 

@@ -30,6 +30,7 @@ export default ({ data }) => {
                     {getHeaders().map(prop => (
                         <td>{item[prop]}</td>
                     ))}
+                    <td></td>
                 </tr>
             ))}
         </tbody>
