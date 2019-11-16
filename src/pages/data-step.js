@@ -13,7 +13,7 @@ const CenteredContainer = styled(Container)`
     text-align: center;
 `;
 
-export default ({ data, setData, setPage }) => {
+export default ({ data, setData, onNextStep }) => {
     const [error, setError] = useState("");
 
     const handleNext = () => {
@@ -22,7 +22,7 @@ export default ({ data, setData, setPage }) => {
             return;
         }
 
-        setPage("define-template");
+        onNextStep();
     };
 
     const handleDataChange = file => {

@@ -6,7 +6,7 @@ import Button from "../components/button";
 
 import "react-quill/dist/quill.snow.css";
 
-export default ({ template, setTemplate }) => {
+export default ({ template, setTemplate, onNextStep }) => {
     return (
         <Container>
             <h1>2. Defina o template para aplicar os dados do tsv.</h1>
@@ -15,7 +15,7 @@ export default ({ template, setTemplate }) => {
                 "%"(sem aspas).
             </h2>
             <ReactQuill value={template} onChange={setTemplate} />
-            <Button>Continuar</Button>
+            <Button onClick={onNextStep}>Continuar</Button>
         </Container>
     );
 };

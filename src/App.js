@@ -2,28 +2,34 @@ import React, { useState } from "react";
 
 import "./App.css";
 
-import Initial from "./pages/initial";
-import SecondStep from "./pages/secondStep";
-import Final from "./pages/final";
+import DataStep from "./pages/data-step";
+import TemplateStep from "./pages/template-step";
+import DownloadStep from "./pages/download-step";
 
 const App = () => {
-    const [currentPage, setPage] = useState("select-tsv");
+    const [currentStep, setStep] = useState("data-step");
 
     const [data, setData] = useState();
     const [template, setTemplate] = useState();
 
+    const onNextStep = () => {
+        const steps = ["data-step", "template-step", "download-step"];
+
+        setStep(steps[steps.indexOf(currentStep) + 1]);
+    };
+
     return (
         <>
-            {currentPage === "select-tsv" && (
-                <Initial
-                    {...{ data, template, setData, setTemplate, setPage }}
+            {currentStep === "data-step" && (
+                <DataStep
+                    {...{ data, template, setData, setTemplate, onNextStep }}
                 />
             )}
-            {currentPage === "define-template" && (
-                <SecondStep {...{ template, setTemplate }} />
+            {currentStep === "template-step" && (
+                <TemplateStep {...{ template, setTemplate, onNextStep }} />
             )}
-            {currentPage === "download-pdfs" && (
-                <Final {...{ data, template, setData, setTemplate }} />
+            {currentStep === "download-step" && (
+                <DownloadStep {...{ data, template, setData, setTemplate }} />
             )}
         </>
     );
