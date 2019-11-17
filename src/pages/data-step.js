@@ -40,7 +40,7 @@ export default ({ data, setData, onNextStep }) => {
             <h2>1. Selecione o arquivo tsv a preencher o template</h2>
             <FileInput onSelectFile={handleDataChange} readAs="Text" />
             {error !== "" && <Error>{error}</Error>}
-            <Button onClick={handleNext}>Gerar PDFs</Button>
+            <Button onClick={handleNext}>Continuar</Button>
         </CenteredContainer>
     );
 };

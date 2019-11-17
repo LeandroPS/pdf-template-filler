@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./App.css";
 
@@ -10,7 +10,11 @@ const App = () => {
     const [currentStep, setStep] = useState("data-step");
 
     const [data, setData] = useState();
-    const [template, setTemplate] = useState();
+    const [template, setTemplate] = useState("<p>nome: %aluno%</p>");
+
+    useEffect(() => {
+        console.log(template);
+    }, [template]);
 
     const onNextStep = () => {
         const steps = ["data-step", "template-step", "download-step"];
