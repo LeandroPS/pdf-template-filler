@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Container from "../components/container";
 import Table from "../components/table";
 
+import generatePDF from "../utils/generatePDF";
+
 const DownloadButton = styled.button`
     border: none;
     outline: none;
@@ -27,8 +29,8 @@ export default ({ data, template }) => {
     const mapTableHeaders = () => (
         <thead>
             <tr>
-                {getHeaders().map(item => (
-                    <th>{item}</th>
+                {getHeaders().map((item, index) => (
+                    <th key={index}>{item}</th>
                 ))}
                 <th></th>
             </tr>
@@ -39,12 +41,12 @@ export default ({ data, template }) => {
         <tbody>
             {data.map(item => (
                 <tr>
-                    {getHeaders().map(prop => (
-                        <td>{item[prop]}</td>
+                    {getHeaders().map((prop, index) => (
+                        <td key={index}>{item[prop]}</td>
                     ))}
                     <td>
                         <DownloadButton onClick={() => generateDocument(item)}>
-                            <i class="lni-download"></i>
+                            <i className="lni-download"></i>
                         </DownloadButton>
                     </td>
                 </tr>
@@ -61,6 +63,8 @@ export default ({ data, template }) => {
                 item[header]
             );
         });
+
+        generatePDF(itemTemplate);
 
         console.log(itemTemplate);
     };
