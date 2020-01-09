@@ -21,7 +21,8 @@ export default ({ data, template }) => {
     const getHeaders = () => {
         let headers = [];
         for (var header in data[0]) {
-            if (headers.length < 4) headers.push(header);
+            //if (headers.length < 4) headers.push(header);
+            headers.push(header);
         }
         return headers;
     };
@@ -29,9 +30,11 @@ export default ({ data, template }) => {
     const mapTableHeaders = () => (
         <thead>
             <tr>
-                {getHeaders().map((item, index) => (
-                    <th key={index}>{item}</th>
-                ))}
+                {getHeaders()
+                    .slice(0, 4)
+                    .map((item, index) => (
+                        <th key={index}>{item}</th>
+                    ))}
                 <th></th>
             </tr>
         </thead>
@@ -41,9 +44,11 @@ export default ({ data, template }) => {
         <tbody>
             {data.map(item => (
                 <tr>
-                    {getHeaders().map((prop, index) => (
-                        <td key={index}>{item[prop]}</td>
-                    ))}
+                    {getHeaders()
+                        .slice(0, 4)
+                        .map((prop, index) => (
+                            <td key={index}>{item[prop]}</td>
+                        ))}
                     <td>
                         <DownloadButton onClick={() => generateDocument(item)}>
                             <i className="lni-download"></i>
@@ -58,6 +63,7 @@ export default ({ data, template }) => {
         let itemTemplate = template;
 
         getHeaders().forEach(header => {
+            console.log(header);
             itemTemplate = itemTemplate.replace(
                 `%${header.toLowerCase()}%`,
                 item[header]
