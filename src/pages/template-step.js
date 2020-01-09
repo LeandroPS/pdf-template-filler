@@ -14,7 +14,23 @@ export default ({ template, setTemplate, onNextStep }) => {
                 Para preenchimento ponha cada campo entre dois caracteres
                 "%"(sem aspas).
             </h2>
-            <ReactQuill value={template} onChange={setTemplate} />
+            <ReactQuill
+                value={template}
+                modules={{
+                    toolbar: [
+                        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+                        [{ font: [] }],
+                        [{ align: [] }],
+                        ["bold", "italic", "underline"],
+
+                        [{ list: "bullet" }],
+                        ["link", "image"],
+
+                        ["clean"]
+                    ]
+                }}
+                onChange={setTemplate}
+            />
             <Button onClick={onNextStep}>Continuar</Button>
         </Container>
     );
