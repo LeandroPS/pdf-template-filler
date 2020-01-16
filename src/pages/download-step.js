@@ -3,85 +3,72 @@ import React from "react";
 import styled from "styled-components";
 
 import Container from "../components/container";
-import Table from "../components/table";
 
 import generatePDF from "../utils/generatePDF";
+
+import contratosTemplate from "../templates/newTemplates";
 
 const DownloadButton = styled.button`
     border: none;
     outline: none;
-    font-size: 20px;
+    font-size: 15px;
     background-color: rgba(0, 0, 0, 0.05);
     padding: 10px;
     border-radius: 5px;
-    font-weight: bold;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    i {
+        margin-right: 5px;
+    }
 `;
 
-export default ({ data, template }) => {
-    const getHeaders = () => {
-        let headers = [];
-        for (var header in data[0]) {
-            //if (headers.length < 4) headers.push(header);
-            headers.push(header);
-        }
-        return headers;
-    };
+const ItemContainer = styled.div`
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-bottom: 10px;
 
-    const mapTableHeaders = () => (
-        <thead>
-            <tr>
-                {getHeaders()
-                    .slice(0, 4)
-                    .map((item, index) => (
-                        <th key={index}>{item}</th>
-                    ))}
-                <th></th>
-            </tr>
-        </thead>
-    );
+    .aluno {
+        margin-bottom: 10px;
+        padding: 5px;
+        font-weight: bold;
+    }
 
-    const mapTableContent = () => (
-        <tbody>
-            {data.map(item => (
-                <tr>
-                    {getHeaders()
-                        .slice(0, 4)
-                        .map((prop, index) => (
-                            <td key={index}>{item[prop]}</td>
-                        ))}
-                    <td>
-                        <DownloadButton onClick={() => generateDocument(item)}>
-                            <i className="lni-download"></i>
-                        </DownloadButton>
-                    </td>
-                </tr>
+    .downloads {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+    }
+`;
+
+const Item = ({ item }) => (
+    <ItemContainer>
+        <div className="aluno">{item["ALUNO"]}</div>
+        <div className="downloads">
+            {contratosTemplate.map(contrato => (
+                <DownloadButton onClick={() => generatePDF(contrato, item)}>
+                    <i className="lni-download"></i>
+                    {contrato.name}
+                </DownloadButton>
             ))}
-        </tbody>
-    );
+        </div>
+    </ItemContainer>
+);
 
-    const generateDocument = item => {
-        let itemTemplate = template;
-
-        getHeaders().forEach(header => {
-            console.log(header);
-            itemTemplate = itemTemplate.replace(
-                `%${header.toLowerCase()}%`,
-                item[header]
-            );
-        });
-
-        generatePDF(itemTemplate);
-
-        console.log(itemTemplate);
-    };
-
+export default ({ data }) => {
     return (
         <Container>
             <h1>Baixe os arquivos</h1>
-            <Table>
-                {mapTableHeaders()}
-                {mapTableContent()}
-            </Table>
+            <div>
+                {data.map(item => (
+                    <Item item={item} />
+                ))}
+            </div>
         </Container>
     );
 };
