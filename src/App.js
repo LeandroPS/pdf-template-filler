@@ -6,7 +6,7 @@ import DataStep from "./pages/data-step";
 import DownloadStep from "./pages/download-step";
 
 const App = () => {
-    const [currentStep, setStep] = useState("data-step");
+    const [currentStep, setStep] = useState("download-step");
 
     const [data, setData] = useState();
 
