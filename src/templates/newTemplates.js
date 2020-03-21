@@ -58,9 +58,8 @@ export default [
         file: require("../templates/pdfs/ratificacao_ai_recorrencia_sib.pdf"),
         name: "Rat. AI e rec. SIB",
         fields: [
-            { field: "aluno", page: 1, x: 303, y: 573 },
-            { field: "região", page: 1, x: 230, y: 724 },
-            { literal: new Date().getDate(), page: 1, x: 405, y: 702 },
+            { field: "região", page: 1, x: 230, y: 719 },
+            { literal: new Date().getDate(), page: 1, x: 405, y: 677 },
             {
                 literal: [
                     "Janeiro",
@@ -78,10 +77,10 @@ export default [
                 ][new Date().getMonth()],
                 page: 1,
                 x: 455,
-                y: 702
+                y: 677
             },
-            { literal: new Date().getFullYear(), page: 1, x: 35, y: 689 },
-            { literal: new Date().getDate(), page: 1, x: 390, y: 173 },
+            { literal: new Date().getFullYear(), page: 1, x: 35, y: 656 },
+            { literal: new Date().getDate(), page: 1, x: 375, y: 408 },
             {
                 literal: [
                     "Janeiro",
@@ -98,12 +97,12 @@ export default [
                     "Dezembro"
                 ][new Date().getMonth()],
                 page: 1,
-                x: 440,
-                y: 173
+                x: 425,
+                y: 408
             },
-            { literal: new Date().getFullYear(), page: 1, x: 507, y: 173 },
-            { literal: "Campos dos Goytacazes", page: 1, x: 240, y: 173 },
-            { literal: "RJ", page: 1, x: 368, y: 173 }
+            { literal: new Date().getFullYear(), page: 1, x: 522, y: 408 },
+            { literal: "Campos dos Goytacazes", page: 1, x: 220, y: 408 },
+            { literal: "RJ", page: 1, x: 353, y: 408 }
         ]
     },
     {
@@ -157,5 +156,63 @@ export default [
             { literal: "Campos dos Goytacazes", page: 1, x: 240, y: 173 },
             { literal: "RJ", page: 1, x: 368, y: 173 }
         ]
+    },
+    {
+        file: require("../templates/pdfs/termo_recorrencia_sib.pdf"),
+        name: "Termo para Recorrência SIB",
+        fields: [{ field: "aluno", page: 1, x: 240, y: 736 }]
     }
 ];
+
+// {
+//     file: require("../templates/pdfs/ratificacao_ai_recorrencia_sib.pdf"),
+//     name: "Rat. AI e rec. SIB",
+//     fields: [
+//         { field: "aluno", page: 1, x: 303, y: 573 },
+//         { field: "região", page: 1, x: 230, y: 724 },
+//         { literal: new Date().getDate(), page: 1, x: 405, y: 702 },
+//         {
+//             literal: [
+//                 "Janeiro",
+//                 "Fevereiro",
+//                 "Março",
+//                 "Abril",
+//                 "Maio",
+//                 "Junho",
+//                 "Julho",
+//                 "Agosto",
+//                 "Setembro",
+//                 "Outubro",
+//                 "Novembro",
+//                 "Dezembro"
+//             ][new Date().getMonth()],
+//             page: 1,
+//             x: 455,
+//             y: 702
+//         },
+//         { literal: new Date().getFullYear(), page: 1, x: 35, y: 689 },
+//         { literal: new Date().getDate(), page: 1, x: 390, y: 173 },
+//         {
+//             literal: [
+//                 "Janeiro",
+//                 "Fevereiro",
+//                 "Março",
+//                 "Abril",
+//                 "Maio",
+//                 "Junho",
+//                 "Julho",
+//                 "Agosto",
+//                 "Setembro",
+//                 "Outubro",
+//                 "Novembro",
+//                 "Dezembro"
+//             ][new Date().getMonth()],
+//             page: 1,
+//             x: 440,
+//             y: 173
+//         },
+//         { literal: new Date().getFullYear(), page: 1, x: 507, y: 173 },
+//         { literal: "Campos dos Goytacazes", page: 1, x: 240, y: 173 },
+//         { literal: "RJ", page: 1, x: 368, y: 173 }
+//     ]
+// },
